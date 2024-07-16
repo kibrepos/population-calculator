@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Population Calculator</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap">
+
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-image: url("univbg.avif");
+            /* Full height */
+            height: 100%;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #000; /* Fallback color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .outer-container4 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+            padding: 20px; /* Adjust padding */
+            border-radius: 50%; /* Make the container circular */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); /* Soft white shadow */
+            width: 1400px; /* Increase width */
+            height: 1200px; /* Increase height */
+            text-align: center;
+        }
+
+        .outer-container2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+            padding: 20px; /* Adjust padding */
+            border-radius: 50%; /* Make the container circular */
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Soft white shadow */
+            width: 1200px; /* Increase width */
+            height: 1100px; /* Increase height */
+            text-align: center;
+        }
+
+        .outer-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+            padding: 20px; /* Adjust padding */
+            border-radius: 50%; /* Make the container circular */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Soft white shadow */
+            width: 900px; /* Increase width */
+            height: 800px; /* Increase height */
+            text-align: center;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 100px; /* Adjust padding */
+            border-radius: 50%; /* Make the container circular */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            width: 400px; /* Adjust width */
+            height: 400px; /* Adjust height */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container h1 {
+            margin-bottom: 20px;
+            color: #333; /* Dark text color */
+        }
+
+        .container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%; /* Ensure form takes full width */
+        }
+
+        .container label {
+            margin-bottom: 10px;
+            font-size: 1em;
+            display: block;
+            width: 100%; /* Ensure labels take full width */
+            text-align: left; /* Align labels to the left */
+            color: #555; /* Medium dark text color */
+        }
+
+        .container input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 80%; /* Adjust input width */
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .container button {
+            padding: 10px;
+            font-size: 1.1em;
+            color: #fff;
+            background-color: #007bff; /* Blue button */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 80%; /* Adjust button width */
+        }
+
+        .container button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        #populationResult {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333; /* Dark text color */
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-container4">
+        <div class="outer-container2">
+            <div class="outer-container">
+                <div class="container">
+                    <h1>Population Calculator</h1>
+                    <form id="populationForm">
+                        <label for="initialPopulation">Initial Population (x0):</label>
+                        <input type="number" id="initialPopulation" name="initialPopulation" required>
+                        <label for="growthRate">Growth Rate (r):</label>
+                        <input type="number" id="growthRate" name="growthRate" step="0.01" required>
+                        <label for="years">Number of Years (t):</label>
+                        <input type="number" id="years" name="years" required>
+                        <button type="button" onclick="calculatePopulation()">Calculate Population</button>
+                        <h6>Kibrsifr</h6>
+                    </form>
+                    <div id="populationResult"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculatePopulation() {
+            const x0 = parseFloat(document.getElementById('initialPopulation').value);
+            const r = parseFloat(document.getElementById('growthRate').value);
+            const t = parseFloat(document.getElementById('years').value);
+            const population = x0 * Math.pow(1 + r, t);
+
+            document.getElementById('populationResult').innerText = 
+                `Population after ${t} years: ${population.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
